@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 const newTodo = ref('')
 const works = ref([])
+const isInput = ref(false)
 const addWork = () => {
   if (newTodo.value === '') {
     return
@@ -11,10 +12,12 @@ const addWork = () => {
       text: newTodo.value,
     })
     newTodo.value = ''
+    isInput.value = true
   }
 }
 const clearWork = () => {
   works.value = []
+  isInput.value = false
 }
 </script>
 
@@ -33,7 +36,7 @@ const clearWork = () => {
           <li v-for="item in works" :key="item.id">{{ item.text }}</li>
         </ol>
       </div>
-      <div class="bottom">
+      <div v-if="isInput" class="bottom">
         <button class="btn btn-clear" @click="clearWork">Clear Work</button>
       </div>
     </div>
@@ -94,7 +97,6 @@ input {
 .list-todo {
   margin-top: 30px;
   color: #8689da;
-  height: 300px;
   font-weight: bold;
   margin-left: 100px;
 }
