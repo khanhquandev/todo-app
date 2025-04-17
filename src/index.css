@@ -1,0 +1,10 @@
+* {
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  background: #5dadec;
+}

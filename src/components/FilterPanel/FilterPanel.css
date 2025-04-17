@@ -1,0 +1,32 @@
+.filter-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 5px;
+}
+.filter-panel {
+  background: #5dadec;
+}
+.filter-item {
+  background: #e6e6e6;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.filter-item img {
+  width: 60px;
+  height: 60px;
+}
+.filter-item.selected {
+  background-color: #ffd37a;
+  font-weight: bold;
+}
+.search-field {
+  width: 100%;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  outline: none;
+}

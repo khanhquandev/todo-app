@@ -1,0 +1,37 @@
+.task-input,
+.todo-item {
+  border: 0;
+  background-color: white;
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+.todo-item {
+  cursor: pointer;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.todo-item-left {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  border: 0;
+  background-color: white;
+  width: 100%;
+  height: 35px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  &:hover {
+    background-color: #ffd37a;
+    font-weight: bold;
+  }
+}
+.todo-item img {
+  width: 45px;
+  height: 45px;
+}
