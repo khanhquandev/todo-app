@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import "./FilterPanel.css";
 
 const FILTER_ITEMS = [
@@ -23,28 +24,30 @@ const FILTER_ITEMS = [
   },
 ];
 const FilterPanel = (props) => {
-  var importantQuantity = 0;
-  var completedQuantity = 0;
-  props.setQuantity.map((item) => {
-    if (item.isImportant == true) {
-      importantQuantity = importantQuantity + 1;
-    }
-    if (item.isCompleted == true) {
-      completedQuantity = completedQuantity + 1;
-    }
-  });
-  FILTER_ITEMS.map((filterItem) => {
-    switch (filterItem.id) {
-      case "all":
-        return (filterItem.quantity = props.setQuantity.length);
-      case "important":
-        return (filterItem.quantity = importantQuantity);
-      case "completed":
-        return (filterItem.quantity = completedQuantity);
-      case "delete":
-        return (filterItem.quantity = 11);
-    }
-  });
+  useMemo(() => {
+    var importantQuantity = 0;
+    var completedQuantity = 0;
+    props.setQuantity.map((item) => {
+      if (item.isImportant == true) {
+        importantQuantity = importantQuantity + 1;
+      }
+      if (item.isCompleted == true) {
+        completedQuantity = completedQuantity + 1;
+      }
+    });
+    FILTER_ITEMS.map((filterItem) => {
+      switch (filterItem.id) {
+        case "all":
+          return (filterItem.quantity = props.setQuantity.length);
+        case "important":
+          return (filterItem.quantity = importantQuantity);
+        case "completed":
+          return (filterItem.quantity = completedQuantity);
+        case "delete":
+          return (filterItem.quantity = 11);
+      }
+    });
+  }, [props.setQuantity]);
   return (
     <div className="filter-panel">
       <div className="search">
@@ -53,6 +56,10 @@ const FilterPanel = (props) => {
           className="search-field"
           name="search-text"
           placeholder="Search"
+          value={props.searchText}
+          onChange={(e) => {
+            props.setSearchText(e.target.value);
+          }}
         />
       </div>
 

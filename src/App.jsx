@@ -10,6 +10,7 @@ function App() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [activeTodoItemId, setActiveTodoItemId] = useState();
   const [selectedFilterId, setSelectedFilterId] = useState("all");
+  const [searchText, setSearchText] = useState("");
   const activeTodoItem = todoList.find((todo) => todo.id === activeTodoItemId);
   const handleCompleteCheckBox = (todoId) => {
     const newTodoList = todoList.map((todo) => {
@@ -38,6 +39,9 @@ function App() {
     todoList &&
     todoList
       .filter((todo) => {
+        if (!todo.name.includes(searchText)) {
+          return false;
+        }
         switch (selectedFilterId) {
           case "all":
             return true;
@@ -103,6 +107,8 @@ function App() {
         selectedFilterId={selectedFilterId}
         setSelectedFilterId={setSelectedFilterId}
         setQuantity={todoList}
+        searchText={searchText}
+        setSearchText={setSearchText}
       ></FilterPanel>
       <div className="main-content">
         <div style={{ padding: 0 }}>
